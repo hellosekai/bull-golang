@@ -7,11 +7,12 @@
 package main
 
 import (
-	"bull-golang"
 	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
+
+	"github.com/hellosekai/bull-golang"
 
 	"github.com/go-redis/redis/v8"
 	"github.com/google/uuid"
