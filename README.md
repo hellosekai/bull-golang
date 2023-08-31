@@ -4,7 +4,7 @@
  * @Author: liyibing liyibing@lixiang.com
  * @Date: 2023-07-28 11:23:27
 -->
-# bull-go
+# bull-golang
 
 bull-js golang 版本
 

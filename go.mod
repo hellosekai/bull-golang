@@ -1,4 +1,4 @@
-module bull-go
+module bull-golang
 
 go 1.20
 

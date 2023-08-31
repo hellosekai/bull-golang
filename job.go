@@ -1,6 +1,6 @@
 /**
  * @Description: data struct and operations with job
- * @FilePath: /bull-go/job.go
+ * @FilePath: /bull-golang/job.go
  * @Author: liyibing liyibing@lixiang.com
  * @Date: 2023-07-19 15:59:43
  */

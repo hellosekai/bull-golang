@@ -1,14 +1,14 @@
 /**
  * @Description: data struct and operations with queue
- * @FilePath: /bull-go/queue.go
+ * @FilePath: /bull-golang/queue.go
  * @Author: liyibing liyibing@lixiang.com
  * @Date: 2023-07-19 15:55:49
  */
 package bull
 
 import (
-	"bull-go/internel/luaScripts"
-	"bull-go/internel/redisAction"
+	"bull-golang/internel/luaScripts"
+	"bull-golang/internel/redisAction"
 
 	"github.com/go-redis/redis/v8"
 	"github.com/google/uuid"

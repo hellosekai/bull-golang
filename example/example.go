@@ -7,7 +7,7 @@
 package main
 
 import (
-	"bull-go"
+	"bull-golang"
 	"context"
 	"encoding/json"
 	"errors"
