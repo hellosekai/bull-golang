@@ -7,8 +7,8 @@
 package bull
 
 import (
-	"github.com/hellosekai/bull-golang/internel/luaScripts"
-	"github.com/hellosekai/bull-golang/internel/redisAction"
+	"github.com/hellosekai/bull-golang/internal/luaScripts"
+	"github.com/hellosekai/bull-golang/internal/redisAction"
 
 	"github.com/go-redis/redis/v8"
 	"github.com/google/uuid"
@@ -20,6 +20,11 @@ type BullQueueIface interface {
 
 var _ BullQueueIface = (*BullQueue)(nil)
 
+const (
+	SingleNode = 0
+	Cluster    = 1
+)
+
 type BullQueue struct {
 	Name      string
 	Token     uuid.UUID
@@ -28,6 +33,7 @@ type BullQueue struct {
 }
 
 type BullQueueOption struct {
+	Mode        int
 	KeyPrefix   string
 	QueueName   string
 	RedisIp     string
@@ -43,8 +49,9 @@ func NewBullQueue(opts BullQueueOption) (*BullQueue, error) {
 
 	redisIp := opts.RedisIp
 	redisPasswd := opts.RedisPasswd
+	redisMode := opts.Mode
 	var err error
-	q.Client, err = redisAction.InitRedisClient(redisIp, redisPasswd)
+	q.Client, err = redisAction.Init(redisIp, redisPasswd, redisMode)
 	if err != nil {
 		return nil, err
 	}
@@ -59,8 +66,9 @@ func (q *BullQueue) Init(opts BullQueueOption) error {
 
 	redisIp := opts.RedisIp
 	redisPasswd := opts.RedisPasswd
+	redisMode := opts.Mode
 	var err error
-	q.Client, err = redisAction.InitRedisClient(redisIp, redisPasswd)
+	q.Client, err = redisAction.Init(redisIp, redisPasswd, redisMode)
 	if err != nil {
 		return err
 	}
