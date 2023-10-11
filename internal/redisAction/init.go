@@ -39,6 +39,7 @@ func Init(ip string, passwd string, mode int) (redis.Cmdable, error) {
 	if len(address) < 1 {
 		return nil, ErrWrongIP
 	}
+	mode = 0 // 当前只需要支持单节点模式
 	if mode == 0 {
 		return initSingleNode(address[0], passwd)
 	} else if mode == 1 {
