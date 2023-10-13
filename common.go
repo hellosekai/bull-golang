@@ -77,3 +77,17 @@ func WithDelayOp(delayTime int) withOption {
 		o.Delay = delayTime
 	}
 }
+
+/**
+ * @description:
+ * @param {int64} timeStamp by time.Now().UnixMilli()
+ * @return {*}
+ */
+func WithTimeStamp(timeStamp int64) withOption {
+	return func(o *JobOptions) {
+		if o == nil {
+			return
+		}
+		o.TimeStamp = timeStamp
+	}
+}
