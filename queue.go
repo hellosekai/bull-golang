@@ -16,6 +16,7 @@ import (
 
 type BullQueueIface interface {
 	Add(jobData JobData, options ...withOption) (Job, error)
+	Ping() error
 }
 
 var _ BullQueueIface = (*BullQueue)(nil)
@@ -140,4 +141,8 @@ func (q *BullQueue) getArgs(job Job) []interface{} {
 	args = append(args, q.Token)
 
 	return args
+}
+
+func (q *BullQueue) Ping() error {
+	return redisAction.Ping(q.Client)
 }
