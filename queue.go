@@ -96,7 +96,11 @@ func (q *BullQueue) Add(jobData JobData, options ...withOption) (Job, error) {
 		return job, wrapError(err, "bull Add error")
 	}
 	err = q.addJob(job)
-	return job, wrapError(err, "bull Add error")
+	if err != nil {
+		return job, wrapError(err, "bull Add error")
+	}
+
+	return job, nil
 }
 
 func (q *BullQueue) addJob(job Job) error {
