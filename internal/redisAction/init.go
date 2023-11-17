@@ -34,7 +34,7 @@ var (
 // }
 
 func Init(ip string, passwd string, mode int) (redis.Cmdable, error) {
-	regex := regexp.MustCompile(`\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d+`)
+	regex := regexp.MustCompile(`([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?)(\.[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?)*(:[0-9]{1,5})?`)
 	address := regex.FindAllString(ip, -1)
 	if len(address) < 1 {
 		return nil, ErrWrongIP
