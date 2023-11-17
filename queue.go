@@ -54,7 +54,7 @@ func NewBullQueue(opts BullQueueOption) (*BullQueue, error) {
 	var err error
 	q.Client, err = redisAction.Init(redisIp, redisPasswd, redisMode)
 	if err != nil {
-		return nil, wrapError(err, "bull Init error: ")
+		return nil, wrapError(err, "bull Init error")
 	}
 
 	return q, nil
@@ -71,7 +71,7 @@ func (q *BullQueue) Init(opts BullQueueOption) error {
 	var err error
 	q.Client, err = redisAction.Init(redisIp, redisPasswd, redisMode)
 	if err != nil {
-		return wrapError(err, "bull Init error: ")
+		return wrapError(err, "bull Init error")
 	}
 
 	return nil
@@ -93,10 +93,10 @@ func (q *BullQueue) Add(jobData JobData, options ...withOption) (Job, error) {
 	name := _DEFAULT_JOB_NAME
 	job, err := newJob(name, jobData, *distOption)
 	if err != nil {
-		return job, wrapError(err, "bull Add error: ")
+		return job, wrapError(err, "bull Add error")
 	}
 	err = q.addJob(job)
-	return job, wrapError(err, "bull Add error: ")
+	return job, wrapError(err, "bull Add error")
 }
 
 func (q *BullQueue) addJob(job Job) error {
